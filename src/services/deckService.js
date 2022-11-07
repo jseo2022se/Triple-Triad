@@ -1,0 +1,29 @@
+import axios from "axios";
+
+const getToken = () => {
+    let token = localStorage.getItem('token')
+    // console.log(token)
+    return token ? token : 'no token'
+}
+
+const axiosDecks = () => axios.create({
+    baseURL: 'http://localhost:8000/decks',
+    headers: {
+        'Authoriztion': `Bearer ${getToken()}`
+    }
+})
+
+const index = () => {
+    return axiosDecks().get('/index')
+}
+
+const add = (newDeck) => {
+    return axiosDecks().post('/add', newDeck)
+}
+
+const services = {
+    index,
+    add
+}
+
+export default services
