@@ -18,6 +18,7 @@ const index = () => {
 }
 
 const add = (newDeck) => {
+    console.log('checking new deck: ',newDeck)
     return axiosDecks().post('/add', newDeck)
 }
 

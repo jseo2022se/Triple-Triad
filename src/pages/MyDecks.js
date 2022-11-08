@@ -4,11 +4,11 @@ import deckService from '../services/deckService'
 export default function MyDecks({ user, deck }) {
 
     const [decks, setDecks] = useState([])
-    const [card, setCard] = useState({
-        user,
-        cardname: '',
-        cardimage: ''
-    })
+    // const [card, setCard] = useState({
+    //     user,
+    //     cardname: '',
+    //     cardimage: ''
+    // })
 
     const getAllDecks = async () => {
 
@@ -53,9 +53,9 @@ export default function MyDecks({ user, deck }) {
             <ol>
                 {decks.map(d =>
                     <li key={d._id}>
-                        {d.cardname}
+                        <h1>{d.card.id}. {d.card.name}</h1>
                         <br />
-                        {d.cardimage}
+                        <img src={d.card.image} alt={d.card.name}/>
                     </li>
                 )}
             </ol>

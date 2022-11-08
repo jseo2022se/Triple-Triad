@@ -9,6 +9,7 @@ import Register from './pages/Register'
 import MyDecks from './pages/MyDecks';
 
 import userService from './services/userService'
+import deckService from './services/deckService'
 import CardList from './pages/CardList';
 
 
@@ -55,10 +56,23 @@ function App() {
     }
   }, [])
 
-  const addToDeck = (card) => {
-    setDeck([...deck, card])
-    console.log('checking contents of deck',deck)
-    alert(`Added ${card.name} to deck`)
+  const addToDeck = async (card) => {
+
+    let newCard = {
+      user: user.username,
+      card
+    }
+
+    try {
+      const response = await deckService.add(newCard)
+      console.log('inside add to deck handle function', response)
+      // setDeck([...deck, card])
+      alert(`Added ${card.name} to deck.`)
+
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   const searchCardName = async (cardName) => {
