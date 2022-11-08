@@ -19,6 +19,9 @@ export default function Navbar({user, setUser}) {
                 <li>
                     <Link to="/mydecks">My Decks</Link>
                 </li>
+                <li>
+                    <Link to="/cardlist">Card List</Link>
+                </li>
                 <li onClick={logout}>
                     <Link>Logout</Link>
                 </li>

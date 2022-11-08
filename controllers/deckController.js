@@ -18,7 +18,17 @@ const add = async (req, res) => {
     }
 }
 
+const clear = async (req, res) => {
+    try {
+        await DeckModel.deleteMany({})
+        res.status(200).json({ msg: 'Deck has been deleted.'})
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
 module.exports = {
     index,
-    add
+    add,
+    clear
 }

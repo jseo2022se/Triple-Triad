@@ -9,6 +9,7 @@ import Register from './pages/Register'
 import MyDecks from './pages/MyDecks';
 
 import userService from './services/userService'
+import CardList from './pages/CardList';
 
 
 let initialRender = true
@@ -17,6 +18,10 @@ function App() {
 
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+
+  const [uniqueCard, setUniqueCard] = useState([])
+  const [card, setCard] = useState({})
+  const [deck, setDeck] = useState([])
 
   const currentUserInfo = async () => {
     try {
@@ -50,6 +55,26 @@ function App() {
     }
   }, [])
 
+  const addToDeck = (card) => {
+    setDeck([...deck, card])
+    console.log('checking contents of deck',deck)
+    alert(`Added ${card.name} to deck`)
+  }
+
+  const searchCardName = async (cardName) => {
+
+    try {
+      const response = await fetch(
+        `https://triad.raelys.com/api/cards?name_en_cont=${cardName}`
+      )
+      const data = await response.json();
+
+      setUniqueCard(data.results)
+    } catch (error) {
+      console.log("Error fetching cards", error)
+    }
+  }
+
   let routes;
   let loggedIn = user.username
 
@@ -57,9 +82,10 @@ function App() {
     if (loggedIn) {
       routes = (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home searchCardName={searchCardName}/>} />
           <Route path="/profile" element={<Profile username={user.username} email={user.email}/>}/>
-          <Route path='/mydecks' element={<MyDecks user={user.username}/>}/>
+          <Route path='/mydecks' element={<MyDecks user={user.username} deck={deck}/>}/>
+          <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
           <Route path="*" element={<Navigate to="/" />}/>
         </Routes>
       )

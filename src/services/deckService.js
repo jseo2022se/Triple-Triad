@@ -9,7 +9,7 @@ const getToken = () => {
 const axiosDecks = () => axios.create({
     baseURL: 'http://localhost:8000/decks',
     headers: {
-        'Authoriztion': `Bearer ${getToken()}`
+        'Authorization': `Bearer ${getToken()}`
     }
 })
 

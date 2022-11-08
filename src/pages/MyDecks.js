@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import deckService from '../services/deckService'
 
-export default function MyDecks({ user }) {
+export default function MyDecks({ user, deck }) {
 
     const [decks, setDecks] = useState([])
-
-    let decksRef = useRef()
+    const [card, setCard] = useState({
+        user,
+        cardname: '',
+        cardimage: ''
+    })
 
     const getAllDecks = async () => {
 
@@ -22,27 +25,26 @@ export default function MyDecks({ user }) {
         getAllDecks()
     }, [])
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
+    // const handleChange = (e) => {
 
-        let newDeck = {
-            user,
-            notes: decksRef.current.value
-        }
+    //     setCard({...card, [e.target.name]: e.target.value})
+    // }
 
-        try {
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault()
 
-            const response = await deckService.add(newDeck)
+    //     try {
 
-            console.log('inside of deck response for handlesubmit:', response)
+    //         const response = await deckService.add(card)
 
-            setDecks([...decks, response.data.deck])
-            decksRef.current.value = ''
+    //         console.log('inside of deck response for handlesubmit:', response)
+
+    //         setDecks([...decks, response.data.deck])
             
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     return (
         <div>
@@ -50,15 +52,23 @@ export default function MyDecks({ user }) {
 
             <ol>
                 {decks.map(d =>
-                    <li key={d._id}>{d.notes}</li>
+                    <li key={d._id}>
+                        {d.cardname}
+                        <br />
+                        {d.cardimage}
+                    </li>
                 )}
             </ol>
 
-            <form onSubmit={handleSubmit}>
-                <input type="text" ref={decksRef} />
+            {/* <form onSubmit={handleSubmit}>
+                <label htmlFor="cardname">Card Name:</label>
+                <input type="text" name="cardname" onChange={handleChange} value={card.cardname}/>
+                <br /><br /> 
+                <label htmlFor="cardimage">Card Image:</label>
+                <input type="text" name="cardimage" onChange={handleChange} value={card.cardimage} />
                 <br /><br /> 
                 <button>Add Deck</button>
-            </form>
+            </form> */}
         </div>
     )
 }

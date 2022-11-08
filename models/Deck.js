@@ -7,7 +7,19 @@ const deckSchema = new Schema({
         type: String,
         required: true
     },
-    notes: {
+    cardnumber: {
+        type: Number,
+        required: true
+    },
+    carddetails: {
+        type: String,
+        required: true
+    },
+    cardname: {
+        type: String,
+        required: true
+    },
+    cardimage: {
         type: String,
         required: true
     }
