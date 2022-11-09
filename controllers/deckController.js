@@ -18,9 +18,18 @@ const add = async (req, res) => {
     }
 }
 
+const remove = async (req, res) => {
+    try {
+        const deckWithRemovedItem = await DeckModel.findOneAndDelete(req.body)
+        res.status(200).json({ deck: deckWithRemovedItem})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 const clear = async (req, res) => {
     try {
-        await DeckModel.deleteMany({})
+        await DeckModel.deleteMany({user: req.user})
         res.status(200).json({ msg: 'Deck has been deleted.'})
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -30,5 +39,6 @@ const clear = async (req, res) => {
 module.exports = {
     index,
     add,
-    clear
+    clear,
+    remove
 }

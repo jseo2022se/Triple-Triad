@@ -72,7 +72,6 @@ function App() {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   const searchCardName = async (cardName) => {
@@ -98,7 +97,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home searchCardName={searchCardName}/>} />
           <Route path="/profile" element={<Profile username={user.username} email={user.email}/>}/>
-          <Route path='/mydecks' element={<MyDecks user={user.username} deck={deck}/>}/>
+          <Route path='/mydecks' element={<MyDecks username={user.username}/>}/>
           <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
           <Route path="*" element={<Navigate to="/" />}/>
         </Routes>

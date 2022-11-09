@@ -22,9 +22,22 @@ const add = (newDeck) => {
     return axiosDecks().post('/add', newDeck)
 }
 
+const remove = (cardItem) => {
+    console.log('removing card from deck: ', cardItem)
+    return axiosDecks().delete('/remove', cardItem)
+    
+}
+
+const clear = () => {
+    return axiosDecks().delete('/clear')
+}
+
+
 const services = {
     index,
-    add
+    add, 
+    clear,
+    remove
 }
 
 export default services

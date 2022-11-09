@@ -8,22 +8,6 @@ const deckSchema = new Schema({
         required: true
     },
     card: Schema.Types.Mixed
-    // cardnumber: {
-    //     type: Number,
-    //     required: true
-    // },
-    // carddetails: {
-    //     type: String,
-    //     required: true
-    // },
-    // cardname: {
-    //     type: String,
-    //     required: true
-    // },
-    // cardimage: {
-    //     type: String,
-    //     required: true
-    // }
 })
 
 const DeckModel = mongoose.model('Deck', deckSchema)
