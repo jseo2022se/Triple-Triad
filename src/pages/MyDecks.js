@@ -28,10 +28,10 @@ export default function MyDecks({ username } ) {
     }
 
     const removeCard = async (card) => {
-        console.log(card)
+        // console.log(card)
         try {
-            console.log('checking card: ',card)
-            const response = await deckService.remove(card)
+            console.log('checking card: ',card._id)
+            const response = await deckService.remove(card._id)
             alert('Removed card from deck!', response)
             // window.location.reload()
         } catch (error) {

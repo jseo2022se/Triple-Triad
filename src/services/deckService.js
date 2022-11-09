@@ -22,9 +22,9 @@ const add = (newDeck) => {
     return axiosDecks().post('/add', newDeck)
 }
 
-const remove = (cardItem) => {
-    console.log('removing card from deck: ', cardItem)
-    return axiosDecks().delete('/remove', cardItem)
+const remove = (cardId) => {
+    console.log('removing card from deck: ', cardId)
+    return axiosDecks().delete(`/remove/${cardId}`)
     
 }
 

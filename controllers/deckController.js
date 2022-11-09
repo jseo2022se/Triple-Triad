@@ -20,7 +20,8 @@ const add = async (req, res) => {
 
 const remove = async (req, res) => {
     try {
-        const deckWithRemovedItem = await DeckModel.findOneAndDelete(req.body)
+        console.log('inside of deck controller remove: ', req.params.id)
+        const deckWithRemovedItem = await DeckModel.findByIdAndDelete(req.params.id)
         res.status(200).json({ deck: deckWithRemovedItem})
     } catch (error) {
         res.status(400).json({error: error.message})

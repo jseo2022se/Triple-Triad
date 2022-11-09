@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 
 function authorize(req, res, next) {
 
+    console.log('authorize: ',req.body)
     try {
 
         let token = req.header("Authorization")
@@ -18,7 +19,7 @@ function authorize(req, res, next) {
         if (payload.error) {
             throw new Error(payload.error)
         }
-        console.log('here')
+        // console.log('here')
         req.userId = payload.id
         req.user = payload.user
 

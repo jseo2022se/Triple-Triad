@@ -6,7 +6,7 @@ router.get('/index', deckCtrl.index)
 
 router.delete('/clear', deckCtrl.clear)
 
-router.delete('/remove', deckCtrl.remove)
+router.delete('/remove/:id', deckCtrl.remove)
 
 router.post('/add', deckCtrl.add)
 
