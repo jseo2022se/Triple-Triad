@@ -60,6 +60,7 @@ function App() {
     }
   }, [])
 
+  // try adding info here again because otherwise userid is not changed
   const addToDeck = async (card) => {
 
     let newCard = {
