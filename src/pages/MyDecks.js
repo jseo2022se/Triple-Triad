@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import deckService from '../services/deckService'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import cardService from '../services/cardService'
 
-export default function MyDecks({ username } ) {
-
-    const [decks, setDecks] = useState([])
+export default function MyDecks({decks, setDecks}) {
 
     const getAllDecks = async () => {
 
         try {
-            const response = await deckService.index()
-            console.log(response)
-            setDecks(response.data.decks)
+            const response = await cardService.index()
+            // console.log(response)
+            setDecks(response.data.cards)
         } catch (error) {
             console.log(error)
         }
@@ -19,7 +17,7 @@ export default function MyDecks({ username } ) {
 
     const clearDeck = async () => {
         try {
-          const response = await deckService.clear()
+          const response = await cardService.clear()
           alert('Cleared deck!', response)
           window.location.reload()
         } catch (error) {
@@ -30,18 +28,25 @@ export default function MyDecks({ username } ) {
     const removeCard = async (card) => {
         // console.log(card)
         try {
-            console.log('checking card: ',card._id)
-            const response = await deckService.remove(card._id)
+            // console.log('checking card: ',card._id)
+            const response = await cardService.remove(card._id)
             alert('Removed card from deck!', response)
-            // window.location.reload()
+            window.location.reload()
         } catch (error) {
             console.log("Error in removing card:" , error)
         }
     }
 
     useEffect(() => {
+        // alert('running use effect')
         getAllDecks()
     }, [])
+
+    // useEffect(() => {
+    //     // alert('running use effect')
+    //     getAllDecks()
+    // }, [decks])
+
 
 
     return (
@@ -55,11 +60,14 @@ export default function MyDecks({ username } ) {
             <br /><br />
 
             <ol>
-                {decks.map(d =>
+                {decks?.map(d =>
                     <li key={d._id}>
-                        <h1>{d.card.id}. {d.card.name}</h1>
+                        {/* {console.log('d stores: ',d)} */}
+                        <h1>{d.cardinfo.id}. {d.cardinfo.name}</h1>
                         <br />
-                        <img src={d.card.image} alt={d.card.name}/>
+                        <Link to={`/mydecks/${d.cardinfo.id}`}>
+                            <img src={d.cardinfo.image} alt={d.cardinfo.name}/>
+                        </Link>
                         <br />
                         <button onClick={() => removeCard(d)}>Remove from deck</button>
                     </li>

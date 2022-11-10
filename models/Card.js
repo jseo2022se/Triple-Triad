@@ -3,15 +3,19 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 // rename the schema -> card
-const deckSchema = new Schema({
+const cardSchema = new Schema({
+    userid: {
+        type: String,
+        required: true
+    },
     user: {
         type: String,
         required: true
     },
-    card: Schema.Types.Mixed
+    cardinfo: Schema.Types.Mixed
     // make a third property and call it deck type string
 })
 
-const DeckModel = mongoose.model('Deck', deckSchema)
+const CardModel = mongoose.model('Card', cardSchema)
 
-module.exports = DeckModel
+module.exports = CardModel

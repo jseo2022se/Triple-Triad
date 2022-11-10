@@ -9,8 +9,10 @@ import Register from './pages/Register'
 import MyDecks from './pages/MyDecks';
 
 import userService from './services/userService'
-import deckService from './services/deckService'
+import deckService from './services/cardService'
 import CardList from './pages/CardList';
+import CardDetails from './pages/CardDetails';
+import EditProfile from './pages/EditProfile';
 
 
 let initialRender = true
@@ -21,16 +23,18 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   const [uniqueCard, setUniqueCard] = useState([])
-  const [card, setCard] = useState({})
-  const [deck, setDeck] = useState([])
+  const [decks, setDecks] = useState([])
+
+  const [userID, setUserID] = useState('')
 
   const currentUserInfo = async () => {
     try {
       const info = await userService.info()
-
-      const { username, email } = info.data
+      console.log(info)
+      const { userid, username, email } = info.data
 
       setUser({username, email})
+      setUserID(userid)
 
     } catch (error) {
       let message = error.response.data.error
@@ -59,8 +63,9 @@ function App() {
   const addToDeck = async (card) => {
 
     let newCard = {
+      userid: userID,
       user: user.username,
-      card
+      cardinfo: card
     }
 
     try {
@@ -87,7 +92,7 @@ function App() {
       console.log("Error fetching cards", error)
     }
   }
-
+  // console.log(decks)
   let routes;
   let loggedIn = user.username
 
@@ -97,8 +102,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home searchCardName={searchCardName}/>} />
           <Route path="/profile" element={<Profile username={user.username} email={user.email}/>}/>
-          <Route path='/mydecks' element={<MyDecks username={user.username}/>}/>
+          <Route path='/profile/edit' element={<EditProfile username={user.username} setUser={setUser}/>}/>
+          <Route path='/mydecks' element={<MyDecks decks={decks} setDecks={setDecks}/>}/>
           <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
+          <Route path='/mydecks/:id' element={<CardDetails decks={decks} />}/>
           <Route path="*" element={<Navigate to="/" />}/>
         </Routes>
       )

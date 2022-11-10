@@ -16,8 +16,13 @@ const info = () => {
     return axiosUser().get('/info')
 }
 
+const edit = (newInfo) => {
+    return axiosUser().put('/edit', newInfo)
+}
+
 const services = {
-    info
+    info,
+    edit
 }
 
 export default services

@@ -6,38 +6,42 @@ const getToken = () => {
     return token ? token : 'no token'
 }
 
-const axiosDecks = () => axios.create({
-    baseURL: 'http://localhost:8000/decks',
+const axiosCards = () => axios.create({
+    baseURL: 'http://localhost:8000/cards',
     headers: {
         'Authorization': `Bearer ${getToken()}`
     }
 })
 
 const index = () => {
-    return axiosDecks().get('/index')
+    return axiosCards().get('/index')
 }
 
-const add = (newDeck) => {
-    console.log('checking new deck: ',newDeck)
-    return axiosDecks().post('/add', newDeck)
+const add = (newCard) => {
+    console.log('checking new card: ', newCard)
+    return axiosCards().post('/add', newCard)
 }
 
 const remove = (cardId) => {
     console.log('removing card from deck: ', cardId)
-    return axiosDecks().delete(`/remove/${cardId}`)
+    return axiosCards().delete(`/remove/${cardId}`)
     
 }
 
 const clear = () => {
-    return axiosDecks().delete('/clear')
+    return axiosCards().delete('/clear')
 }
 
+const updateinfo = (newinfo) => {
+    return axiosCards().put('/updateinfo', newinfo)
+}
 
 const services = {
     index,
     add, 
     clear,
-    remove
+    remove,
+    updateinfo
 }
 
 export default services
