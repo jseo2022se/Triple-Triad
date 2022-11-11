@@ -60,16 +60,22 @@ function App() {
     }
   }, [])
 
-  // try adding info here again because otherwise userid is not changed
+  // added info request and re-requested userid  
   const addToDeck = async (card) => {
-
-    let newCard = {
-      userid: userID,
-      user: user.username,
-      cardinfo: card
-    }
-
     try {
+
+      console.log('Inside of add to deck in App')
+      const info = await userService.info()
+      const { userid } = info.data
+      setUserID(userid)
+
+      let newCard = {
+        userid: userID,
+        user: user.username,
+        cardinfo: card
+      }
+
+
       const response = await deckService.add(newCard)
       console.log('inside add to deck handle function', response)
       // setDeck([...deck, card])
