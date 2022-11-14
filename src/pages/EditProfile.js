@@ -2,14 +2,15 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import userService from "../services/userService"
 import cardService from "../services/cardService"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
-export default function EditProfile({username, setUser}) {
+export default function EditProfile({ setUser}) {
 
     const navigate = useNavigate()
 
     let [form, setForm] = useState({
         username: '',
-        // password: '',
         email: ''
     })
 
@@ -44,16 +45,20 @@ export default function EditProfile({username, setUser}) {
     return (
         <div>
             <h1>EditProfile</h1>
-            <br /><br />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username: </label>
-                <input type="text" name="username" value={form.username} onChange={handleChange}/>
-                <br /><br />
-                <label htmlFor="email">Email: </label>
-                <input type="email" name="email" value={form.email} onChange={handleChange}/>
-                <br />
-                <button>Submit</button>
-            </form>
+            <br/><br/>
+            <Form>
+                <Form.Group controlId="username">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" name="username" onChange={handleChange} value={form.username} placeholder="Enter new username"/>
+                </Form.Group>
+                <Form.Group controlId="email">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" name="email" value={form.email} onChange={handleChange} placeholder="Enter new email"/>
+                </Form.Group>
+                <Button onClick={handleSubmit}>Submit</Button>
+            </Form>
+            <br/>
+            <button onClick={() => navigate('/profile')}>Return to Profile Page</button>
         </div>
     )
 }

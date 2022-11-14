@@ -20,7 +20,7 @@ export default function DisplayCard({ card }) {
                 </div>
             )
         } else {
-            console.log(card)
+            // console.log(card)
             return (
                 
                 <div>

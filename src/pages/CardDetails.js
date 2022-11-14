@@ -31,7 +31,7 @@ export default function CardDetails({decks}) {
                     </blockquote>
                     <br />
                     <ListGroup className="list-group-flush" as="ol" numbered>
-                        <ListGroup.Item variant="secondary">Sell Price: {cardDetails.cardinfo?.sell_price} Gil</ListGroup.Item>
+                        <ListGroup.Item variant="secondary">Price: {cardDetails.cardinfo?.sell_price} MGP</ListGroup.Item>
                         <ListGroup.Item variant="secondary">Stars: {cardDetails.cardinfo?.stars}</ListGroup.Item>
                         <ListGroup.Item variant="secondary">Type: {cardDetails.cardinfo?.type?.name}</ListGroup.Item>
                         <ListGroup.Item variant="secondary">Owned: {cardDetails.cardinfo?.owned}</ListGroup.Item>
