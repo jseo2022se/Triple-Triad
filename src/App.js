@@ -13,6 +13,7 @@ import deckService from './services/cardService'
 import CardList from './pages/CardList';
 import CardDetails from './pages/CardDetails';
 import EditProfile from './pages/EditProfile';
+import About from './pages/About';
 
 
 let initialRender = true
@@ -113,6 +114,7 @@ function App() {
           <Route path='/mydecks' element={<MyDecks decks={decks} setDecks={setDecks}/>}/>
           <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
           <Route path='/mydecks/:id' element={<CardDetails decks={decks} />}/>
+          <Route path='/about' element={<About />}/>
           <Route path="*" element={<Navigate to="/" />}/>
         </Routes>
       )
@@ -122,6 +124,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login setUser={setUser}/>}/>
           <Route path='/register' element={<Register setUser={setUser}/>}/>
+          <Route path='/about' element={<About />}/>
           <Route path='*' element={<Navigate to="/login"/>}/>
         </Routes>
       )

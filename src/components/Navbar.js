@@ -22,6 +22,9 @@ export default function Navbar({user, setUser}) {
                 <li>
                     <Link to="/cardlist">Card List</Link>
                 </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
                 <li onClick={logout}>
                     <Link>Logout</Link>
                 </li>
@@ -38,6 +41,9 @@ export default function Navbar({user, setUser}) {
                 </li>
                 <li>
                     <Link to="/register">Register</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
                 </li>
             </ul>
         )

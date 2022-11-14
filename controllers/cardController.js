@@ -3,7 +3,7 @@ const CardModel = require('../models/Card')
 const index = async (req, res) => {
     try {
         // change req.user to req.userId
-        console.log('user id: ',req.userId)
+        // console.log('user id: ',req.userId)
         const foundCurrentUsersCards = await CardModel.find({userid: req.userId})
         res.status(200).json({ cards: foundCurrentUsersCards})
     } catch (error) {
