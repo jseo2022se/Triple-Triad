@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import cardService from '../services/cardService'
+import DisplayCard from "../components/DisplayCard";
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 
 export default function MyDecks({decks, setDecks}) {
 
@@ -38,16 +40,8 @@ export default function MyDecks({decks, setDecks}) {
     }
 
     useEffect(() => {
-        // alert('running use effect')
         getAllDecks()
     }, [])
-
-    // useEffect(() => {
-    //     // alert('running use effect')
-    //     getAllDecks()
-    // }, [decks])
-
-
 
     return (
         <div>
@@ -60,18 +54,19 @@ export default function MyDecks({decks, setDecks}) {
             <br /><br />
 
             <ol>
-                {decks?.map(d =>
-                    <li key={d._id}>
-                        {/* {console.log('d stores: ',d)} */}
-                        <h1>{d.cardinfo.id}. {d.cardinfo.name}</h1>
-                        <br />
-                        <Link to={`/mydecks/${d.cardinfo.id}`}>
-                            <img src={d.cardinfo.image} alt={d.cardinfo.name}/>
-                        </Link>
-                        <br />
-                        <button onClick={() => removeCard(d)}>Remove from deck</button>
-                    </li>
-                )}
+                <Row xs={1} md={2} className="g-4">
+                    {decks?.map(d => {
+                        return (
+                            <Col key={d._id}>
+                                <DisplayCard card={d}/>
+                                <br />
+                                <button onClick={() => removeCard(d)}>Remove from deck</button>
+                            
+                            </Col>
+                        )}
+                    )}
+
+                </Row>
             </ol>
 
         </div>

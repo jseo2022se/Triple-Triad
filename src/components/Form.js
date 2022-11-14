@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Button from "react-bootstrap/Button"
+
 
 export default function Form({searchCardName}) {
 
@@ -20,11 +22,13 @@ export default function Form({searchCardName}) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form style={{ marginLeft: "20px" }} onSubmit={handleSubmit}>
                 <label htmlFor="search">Search: </label>
                 <br />
                 <input type="text" value={cardName} onChange={handleChange}/>
-                <button>Submit</button>
+                <Button variant="outline-secondary" size="sm">
+                    Search
+                </Button>
             </form>
         </div>
     )

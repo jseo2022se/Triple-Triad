@@ -1,4 +1,8 @@
 import DisplayCard from "../components/DisplayCard"
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 
 export default function CardList({uniqueCard, addToDeck}) {
 
@@ -6,22 +10,27 @@ export default function CardList({uniqueCard, addToDeck}) {
         if (uniqueCard.length === 0) {
             return (
                 <div>
-                    <h1>No cards found related to the search query...</h1>
+                    <Card border="dark">
+                        <Card.Body>
+                            <Card.Title>
+                                <h1>No cards found related to the search query...</h1>
+                            </Card.Title>
+                        </Card.Body>
+                    </Card>
                 </div>
             )
         } else {
             return (
-                <div>
-                    {uniqueCard.map((card, index) => {
-                        return (
-                            <div key={index}>
-                                <DisplayCard card={card}/>
-                                <br />
-                                <button onClick={() => addToDeck(card)}>Add to Deck</button>
-                            </div>
-                        )
-                    })}
-                </div>
+                <Row xs={1} md={2} className="g-4">
+                        {uniqueCard.map((card, index) => {
+                            return (
+                                <Col key={index}>
+                                    <DisplayCard card={card}/>
+                                    <Button size="sm" variant="light" onClick={() => addToDeck(card)}>Add to Deck</Button>
+                                </Col>
+                            )
+                        })}
+                </Row>
             )
         }
     }

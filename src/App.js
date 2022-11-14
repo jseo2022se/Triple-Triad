@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from './components/NavigationBar';
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
@@ -79,7 +80,7 @@ function App() {
 
       const response = await deckService.add(newCard)
       console.log('inside add to deck handle function', response)
-      // setDeck([...deck, card])
+      
       alert(`Added ${card.name} to deck.`)
 
     } catch (error) {
@@ -100,7 +101,7 @@ function App() {
       console.log("Error fetching cards", error)
     }
   }
-  // console.log(decks)
+
   let routes;
   let loggedIn = user.username
 
@@ -133,7 +134,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar user={user.username} setUser={setUser}/>
+      <NavigationBar user={user.username} setUser={setUser}/>
       {routes}
     </div>
   );

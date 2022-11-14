@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import Card from "react-bootstrap/Card"
+import { ListGroup } from "react-bootstrap";
 
 export default function CardDetails({decks}) {
 
@@ -15,16 +17,27 @@ export default function CardDetails({decks}) {
         return card.length ? setCardDetails(card[0]) : navigate('/')
     }, [])
 
-    // console.log(cardDetails)
     return (
         <div>
-            <h1>Card Details</h1>
-            <br /><br />
-            <h1>Name: {cardDetails.cardinfo?.name} </h1>
-            <h1>ID: {cardDetails.cardinfo?.id}</h1>
-            <img src={cardDetails.cardinfo?.image}/>
-            <h2>Description: {cardDetails.cardinfo?.description}</h2>
-            <br /><br />
+            <Card style={{ width: '50rem' }} bg="secondary" text="light">
+                <Card.Img variant="top" style={{ width: '18rem' }}src={cardDetails.cardinfo?.image} alt={cardDetails.cardinfo?.name}/>
+                <Card.Body>
+                    <Card.Title>{cardDetails.cardinfo?.id}. {cardDetails.cardinfo?.name}</Card.Title>
+                    <blockquote className="blockquote mb-0">
+                        <Card.Text>
+                            {cardDetails.cardinfo?.description}{' '}
+                        </Card.Text>
+                        <footer className="blockquote-footer" style={{color: 'white'}}><cite title="Source Title" style={{color: 'white'}}>In-Game Description/Quote</cite></footer>
+                    </blockquote>
+                    <br />
+                    <ListGroup className="list-group-flush" as="ol" numbered>
+                        <ListGroup.Item variant="secondary">Sell Price: {cardDetails.cardinfo?.sell_price} Gil</ListGroup.Item>
+                        <ListGroup.Item variant="secondary">Stars: {cardDetails.cardinfo?.stars}</ListGroup.Item>
+                        <ListGroup.Item variant="secondary">Type: {cardDetails.cardinfo?.type?.name}</ListGroup.Item>
+                        <ListGroup.Item variant="secondary">Owned: {cardDetails.cardinfo?.owned}</ListGroup.Item>
+                    </ListGroup>
+                </Card.Body>
+            </Card>
             <button onClick={() => navigate('/mydecks')}>Return to list</button>
         </div>
     )
