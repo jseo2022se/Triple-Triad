@@ -2,11 +2,16 @@ import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { useDispatch } from "react-redux";
+import { setInfo } from "../redux/slices/user";
 
-export default function NavigationBar({user, setUser}) {
+export default function NavigationBar({ user }) {
+
+    const dispatch = useDispatch()
 
     const logout = () => {
-        setUser({})
+
+        dispatch(setInfo({}))
         localStorage.removeItem("token")
     }
 

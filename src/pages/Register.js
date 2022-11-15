@@ -1,13 +1,18 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-
+import { setInfo } from "../redux/slices/user"
+import Form from "react-bootstrap/Form"
 import authService from '../services/authService'
 import userService from '../services/userService'
 
 
-export default function Register ({setUser}) {
+export default function Register () {
+
 
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
     let [form, setForm] = useState({
         username: '',
@@ -30,7 +35,8 @@ export default function Register ({setUser}) {
             
             const info = await userService.info()
 
-            setUser(info.data)
+            dispatch(setInfo(info.data))
+
             navigate('/profile')
 
         } catch (error) {
@@ -42,39 +48,25 @@ export default function Register ({setUser}) {
     return(
         <div>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+            <br />
+            <Form style={{width: "15rem"}} className="center">
+                <Form.Group controlId="email">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" name="email" onChange={handleChange} value={form.email} placeholder="Enter email address"/>
+                </Form.Group>
                 <br />
-                <input 
-                    type="text"
-                    id="username"
-                    name="username"
-                    onChange={handleChange}
-                    value={form.username}
-                />
-                <br /><br />
-                <label htmlFor="email">Email:</label>
+                <Form.Group>
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" name="username" onChange={handleChange} value={form.username} placeholder="Enter username"/>
+                </Form.Group>
                 <br />
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    onChange={handleChange}
-                    value={form.email}
-                />
+                <Form.Group>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" name="password" onChange={handleChange} value={form.password} placeholder="Enter password"/>
+                </Form.Group>
                 <br /><br />
-                <label htmlFor="password">Password:</label>
-                <br />
-                <input 
-                    type="password"
-                    id="password"
-                    name="password"
-                    onChange={handleChange}
-                    value={form.password}
-                />
-                <br /><br />
-                <button>Submit</button>
-            </form>
+                <button onClick={handleSubmit} >Register</button>
+            </Form>
         </div>
     )
 }

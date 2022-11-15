@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setInfo } from './redux/slices/user';
+import { setUniqueCard } from './redux/slices/uniqueCard';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './components/NavigationBar';
@@ -7,7 +10,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import MyDecks from './pages/MyCards';
+import MyCards from './pages/MyCards';
 
 import userService from './services/userService'
 import deckService from './services/cardService'
@@ -22,13 +25,18 @@ let initialRender = true
 
 function App() {
 
-  const [user, setUser] = useState({})
+  const { user } = useSelector(state => state.user)
+
+  const { uniqueCard } = useSelector(state => state.uniqueCard)
+  
   const [isLoading, setIsLoading] = useState(true)
 
-  const [uniqueCard, setUniqueCard] = useState([])
   const [decks, setDecks] = useState([])
 
   const [userID, setUserID] = useState('')
+
+  const dispatch = useDispatch()
+  
 
   const currentUserInfo = async () => {
     try {
@@ -36,7 +44,7 @@ function App() {
       console.log(info)
       const { userid, username, email } = info.data
 
-      setUser({username, email})
+      dispatch(setInfo({username, email}))
       setUserID(userid)
 
     } catch (error) {
@@ -49,6 +57,7 @@ function App() {
       setIsLoading(false)
     }
   }
+
 
   useEffect(() => {
     let token = localStorage.getItem('token')
@@ -63,7 +72,7 @@ function App() {
     }
   }, [])
 
-  // added info request and re-requested userid  
+
   const addToDeck = async (card) => {
     try {
 
@@ -89,6 +98,7 @@ function App() {
     }
   }
 
+
   const searchCardName = async (cardName) => {
 
     try {
@@ -97,7 +107,8 @@ function App() {
       )
       const data = await response.json();
 
-      setUniqueCard(data.results)
+      dispatch(setUniqueCard(data.results))
+
     } catch (error) {
       console.log("Error fetching cards", error)
     }
@@ -112,8 +123,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home searchCardName={searchCardName}/>} />
           <Route path="/profile" element={<Profile username={user.username} email={user.email}/>}/>
-          <Route path='/profile/edit' element={<EditProfile username={user.username} setUser={setUser}/>}/>
-          <Route path='/mydecks' element={<MyDecks decks={decks} setDecks={setDecks}/>}/>
+          <Route path='/profile/edit' element={<EditProfile username={user.username}/>}/>
+          <Route path='/mydecks' element={<MyCards decks={decks} setDecks={setDecks}/>}/>
           <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
           <Route path='/mydecks/:id' element={<CardDetails decks={decks} />}/>
           <Route path='/about' element={<About />}/>
@@ -124,8 +135,8 @@ function App() {
       routes = (
         <Routes>
           <Route path='/' element={<Home searchCardName={searchCardName}/>}/>
-          <Route path='/login' element={<Login setUser={setUser}/>}/>
-          <Route path='/register' element={<Register setUser={setUser}/>}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
           <Route path='/about' element={<About />}/>
           <Route path='*' element={<Navigate to="/login"/>}/>
         </Routes>
@@ -135,7 +146,7 @@ function App() {
 
   return (
     <div className="App bgColor">
-      <NavigationBar user={user.username} setUser={setUser}/>
+      <NavigationBar user={user.username} />
       {routes}
     </div>
   );

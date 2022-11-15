@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
 
-// rename the schema -> card
 const cardSchema = new Schema({
     userid: {
         type: String,
@@ -13,7 +12,6 @@ const cardSchema = new Schema({
         required: true
     },
     cardinfo: Schema.Types.Mixed
-    // make a third property and call it deck type string
 })
 
 const CardModel = mongoose.model('Card', cardSchema)

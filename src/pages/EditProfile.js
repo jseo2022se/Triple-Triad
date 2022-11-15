@@ -4,10 +4,14 @@ import userService from "../services/userService"
 import cardService from "../services/cardService"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
+import { useDispatch } from 'react-redux';
+import { setInfo } from '../redux/slices/user';
 
-export default function EditProfile({ setUser}) {
+export default function EditProfile( ) {
 
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
 
     let [form, setForm] = useState({
         username: '',
@@ -32,7 +36,8 @@ export default function EditProfile({ setUser}) {
 
             const info = await userService.info()
 
-            setUser(info.data)
+            // setUser(info.data)
+            dispatch(setInfo(info.data))
 
             navigate('/profile')
 
