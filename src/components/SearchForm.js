@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 
 
-export default function SearchForm({searchCardName}) {
+export default function SearchForm({ searchCardName }) {
 
     const [cardName, setCardName] = useState("")
 
@@ -18,13 +18,14 @@ export default function SearchForm({searchCardName}) {
         e.preventDefault()
 
         searchCardName(cardName)
+
         navigate("/cardlist")
     }
 
     return (
         <div>
             <br/>
-            <Form>
+            <Form style={{width: "15rem"}} className="center">
                 <Form.Group controlId="search">
                     <Form.Label>Search for a card</Form.Label>
                     <Form.Control type="text" placeholder="Enter card name" value={cardName} onChange={handleChange} />

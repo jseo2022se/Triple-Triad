@@ -1,7 +1,7 @@
 import SearchForm from "../components/SearchForm";
 import Carousel from 'react-bootstrap/Carousel'
 
-export default function Home({searchCardName}) {
+export default function Home({ searchCardName }) {
     const first = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREGhnGRJi8uiEPPu-Esva3xckHvvih1ockzzUWOZ_HpGAoGWlGyHqh4gQxZpg1ePtQgo4&usqp=CAU"
     const second = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj6MjI3RZtYK313NugmsN10clRqmFhcTM0CKaeJ1c0metEsK_VZrJKCSOIo9EO2AdC0vw&usqp=CAU" 
     const third = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmgvFcrgqMn9Xco1s0AOm01P1SsE2IX3EN-Vvh16s5DmWmtGIl8U0lcSsrWTWOb3Q2WM&usqp=CAU"
@@ -12,7 +12,7 @@ export default function Home({searchCardName}) {
         <div>
             <h1>Home Page</h1>
             <br />
-            <Carousel style={{width: '30rem'}} variant="dark">
+            <Carousel style={{width: '20rem'}} variant="dark" className="center">
                 <Carousel.Item style={{width: '20rem'}}>
                     <img className="d-block w-100" src={first} alt="first slide"/>
                 </Carousel.Item>

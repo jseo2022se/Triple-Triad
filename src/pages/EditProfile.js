@@ -44,21 +44,23 @@ export default function EditProfile({ setUser}) {
 
     return (
         <div>
-            <h1>EditProfile</h1>
+            <h1>Edit Profile Information</h1>
             <br/><br/>
-            <Form>
+            <Form style={{width: "15rem"}} className="center">
                 <Form.Group controlId="username">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control type="text" name="username" onChange={handleChange} value={form.username} placeholder="Enter new username"/>
                 </Form.Group>
+                <br />
                 <Form.Group controlId="email">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control type="email" name="email" value={form.email} onChange={handleChange} placeholder="Enter new email"/>
                 </Form.Group>
+                <br />
                 <Button onClick={handleSubmit}>Submit</Button>
             </Form>
             <br/>
-            <button onClick={() => navigate('/profile')}>Return to Profile Page</button>
+            <button className="center" style={{width: "13rem"}} onClick={() => navigate('/profile')}>Return to Profile Page</button>
         </div>
     )
 }

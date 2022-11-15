@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import MyDecks from './pages/MyDecks';
+import MyDecks from './pages/MyCards';
 
 import userService from './services/userService'
 import deckService from './services/cardService'
@@ -15,6 +15,7 @@ import CardList from './pages/CardList';
 import CardDetails from './pages/CardDetails';
 import EditProfile from './pages/EditProfile';
 import About from './pages/About';
+
 
 
 let initialRender = true
@@ -122,7 +123,7 @@ function App() {
     } else {
       routes = (
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/' element={<Home searchCardName={searchCardName}/>}/>
           <Route path='/login' element={<Login setUser={setUser}/>}/>
           <Route path='/register' element={<Register setUser={setUser}/>}/>
           <Route path='/about' element={<About />}/>
@@ -133,7 +134,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App bgColor">
       <NavigationBar user={user.username} setUser={setUser}/>
       {routes}
     </div>

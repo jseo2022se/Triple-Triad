@@ -4,7 +4,7 @@ import DisplayCard from "../components/DisplayCard";
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 
-export default function MyDecks({decks, setDecks}) {
+export default function MyCards({decks, setDecks}) {
 
     const getAllDecks = async () => {
 

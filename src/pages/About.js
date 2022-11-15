@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card"
 
 export default function About () {
     return (
-        <Card>
+        <Card style={{backgroundColor: "rgb(185, 181, 145)"}}>
             <Card.Body style={{width: '50rem'}}>
                 <Card.Title><h1>About</h1></Card.Title>
                 <Card.Subtitle className="mb-2 text-muted"><h2>Website Purpose</h2></Card.Subtitle>

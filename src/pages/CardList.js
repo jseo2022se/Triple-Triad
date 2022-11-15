@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
+import Image from "react-bootstrap/Image"
 
 export default function CardList({uniqueCard, addToDeck}) {
 
@@ -10,13 +11,14 @@ export default function CardList({uniqueCard, addToDeck}) {
         if (uniqueCard.length === 0) {
             return (
                 <div>
-                    <Card border="dark">
+                    <Card border="dark" style={{backgroundColor: "rgb(165, 181, 145)"}}>
                         <Card.Body>
                             <Card.Title>
                                 <h1>No cards found related to the search query...</h1>
                             </Card.Title>
                         </Card.Body>
                     </Card>
+                    <Image src="https://imgur.com/RoJHwjx.png" className="center"/>
                 </div>
             )
         } else {

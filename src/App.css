@@ -1,5 +1,18 @@
 body {
     margin: 0;
-
 }
 
+.bgColor {
+    background-color: rgb(185, 161, 161);
+}
+
+html {
+    background-color: rgb(185, 161, 161);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
