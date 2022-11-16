@@ -1,8 +1,7 @@
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 const info = async (req, res) => {
-    // console.log('made it to our route!')
-    // console.log('user id:', req.userId)
 
     try {
         const foundUser = await User.findById(req.userId)
@@ -37,10 +36,12 @@ const clear = async (req, res) => {
 }
 
 const edit = async (req, res) => {
-    // try adding bcrypt salt and hash to password
+    
     try {
         console.log(req.userId)
-        const foundUser = await User.findByIdAndUpdate(req.userId, req.body)
+        const salt = await bcrypt.genSalt(10)
+        const encryptedPassword = await bcrypt.hash(req.body.password, salt)
+        const foundUser = await User.findByIdAndUpdate(req.userId, {...req.body, password: encryptedPassword})
         res.status(200).json({ msg: foundUser})
     } catch (error) {
         res.status(400).json({error: error.message})

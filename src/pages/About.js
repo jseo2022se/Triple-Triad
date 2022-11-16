@@ -10,10 +10,14 @@ export default function About () {
                 <footer><cite>Image credited to: <a href="https://aywren.com/2019/02/26/ffxiv-fatter-cat-mount/" target="_blank" rel="noopener noreferrer">Aywren</a></cite></footer>
                 <br />
                 <Card.Text>
-                    This website allows users to search up collectible triple triad cards inside FFXIV.
+                    This website allows users to search up collectible triple triad cards available in FFXIV.
                     This website is also a project that demonstrates a fullstack application, wherein it 
                     features both front-end and back-end functionalities and serves more as a personal
-                    learning project, which will be worked on further more in the future.
+                    learning project, that will receive updates in the future.
+                    <br /><br /><br /><br />
+                    Credits regarding API: Raelys Skyborn of Behemoth | Powered by {" "} <a href="https://github.com/ufx/SaintCoinach" target="_blank" rel="noopener noreferrer">Saint Coinach</a> | 
+                    <br /><br /><br /><br />
+                    FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
                 </Card.Text>
             </Card.Body>
         </Card>

@@ -2,7 +2,6 @@ import axios from "axios";
 
 const getToken = () => {
     let token = localStorage.getItem('token')
-    // console.log(token)
     return token ? token : 'no token'
 }
 
@@ -23,7 +22,7 @@ const add = (newCard) => {
 }
 
 const remove = (cardId) => {
-    console.log('removing card from deck: ', cardId)
+    console.log('removing card from list: ', cardId)
     return axiosCards().delete(`/remove/${cardId}`)
     
 }

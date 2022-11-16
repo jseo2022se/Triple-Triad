@@ -2,8 +2,6 @@ const CardModel = require('../models/Card')
 
 const index = async (req, res) => {
     try {
-        // change req.user to req.userId
-        // console.log('user id: ',req.userId)
         const foundCurrentUsersCards = await CardModel.find({userid: req.userId})
         res.status(200).json({ cards: foundCurrentUsersCards})
     } catch (error) {
@@ -22,7 +20,6 @@ const add = async (req, res) => {
 
 const remove = async (req, res) => {
     try {
-        // console.log('inside of card controller remove: ', req.params.id)
         const removedCardList = await CardModel.findByIdAndDelete(req.params.id)
         res.status(200).json({ card: removedCardList})
     } catch (error) {
@@ -32,7 +29,6 @@ const remove = async (req, res) => {
 
 const clear = async (req, res) => {
     try {
-        // req.user -> req.userId
         await CardModel.deleteMany({userid: req.userId})
         res.status(200).json({ msg: 'Cards has been deleted.'})
     } catch (error) {

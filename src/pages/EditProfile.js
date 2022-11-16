@@ -14,8 +14,9 @@ export default function EditProfile( ) {
     const dispatch = useDispatch()
 
     let [form, setForm] = useState({
+        email: '',
         username: '',
-        email: ''
+        password: ''
     })
 
     const handleChange = (e) => {
@@ -36,7 +37,6 @@ export default function EditProfile( ) {
 
             const info = await userService.info()
 
-            // setUser(info.data)
             dispatch(setInfo(info.data))
 
             navigate('/profile')
@@ -52,16 +52,20 @@ export default function EditProfile( ) {
             <h1>Edit Profile Information</h1>
             <br/><br/>
             <Form style={{width: "15rem"}} className="center">
-                <Form.Group controlId="username">
-                    <Form.Label>Username:</Form.Label>
-                    <Form.Control type="text" name="username" onChange={handleChange} value={form.username} placeholder="Enter new username"/>
-                </Form.Group>
-                <br />
                 <Form.Group controlId="email">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control type="email" name="email" value={form.email} onChange={handleChange} placeholder="Enter new email"/>
                 </Form.Group>
                 <br />
+                <Form.Group controlId="username">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" name="username" onChange={handleChange} value={form.username} placeholder="Enter new username"/>
+                </Form.Group>
+                <br />
+                <Form.Group>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" name="password" onChange={handleChange} value={form.password} placeholder="Enter new password"/>
+                </Form.Group>
                 <Button onClick={handleSubmit}>Submit</Button>
             </Form>
             <br/>

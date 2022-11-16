@@ -13,7 +13,7 @@ import Register from './pages/Register'
 import MyCards from './pages/MyCards';
 
 import userService from './services/userService'
-import deckService from './services/cardService'
+import cardService from './services/cardService'
 import CardList from './pages/CardList';
 import CardDetails from './pages/CardDetails';
 import EditProfile from './pages/EditProfile';
@@ -25,13 +25,16 @@ let initialRender = true
 
 function App() {
 
+  
   const { user } = useSelector(state => state.user)
 
   const { uniqueCard } = useSelector(state => state.uniqueCard)
   
   const [isLoading, setIsLoading] = useState(true)
 
-  const [decks, setDecks] = useState([])
+  const [myCardList, setMyCardList] = useState([])
+
+  const [order, setOrder] = useState(false)
 
   const [userID, setUserID] = useState('')
 
@@ -88,7 +91,7 @@ function App() {
       }
 
 
-      const response = await deckService.add(newCard)
+      const response = await cardService.add(newCard)
       console.log('inside add to deck handle function', response)
       
       alert(`Added ${card.name} to deck.`)
@@ -124,9 +127,9 @@ function App() {
           <Route path="/" element={<Home searchCardName={searchCardName}/>} />
           <Route path="/profile" element={<Profile username={user.username} email={user.email}/>}/>
           <Route path='/profile/edit' element={<EditProfile username={user.username}/>}/>
-          <Route path='/mydecks' element={<MyCards decks={decks} setDecks={setDecks}/>}/>
-          <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck}/>}/>
-          <Route path='/mydecks/:id' element={<CardDetails decks={decks} />}/>
+          <Route path='/mycards' element={<MyCards myCardList={myCardList} setMyCardList={setMyCardList} order={order} setOrder={setOrder}/>}/>
+          <Route path='/cardlist' element={<CardList uniqueCard={uniqueCard} addToDeck={addToDeck} order={order} setOrder={setOrder}/>}/>
+          <Route path='/mycards/:id' element={<CardDetails myCardList={myCardList} />}/>
           <Route path='/about' element={<About />}/>
           <Route path="*" element={<Navigate to="/" />}/>
         </Routes>

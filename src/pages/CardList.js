@@ -4,8 +4,35 @@ import Card from "react-bootstrap/Card"
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import Image from "react-bootstrap/Image"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { setUniqueCard } from "../redux/slices/uniqueCard"
+import { useNavigate } from "react-router-dom"
 
-export default function CardList({uniqueCard, addToDeck}) {
+export default function CardList({uniqueCard, addToDeck, order, setOrder}) {
+
+
+     const dispatch = useDispatch()
+
+     const navigate = useNavigate()
+
+    const sortCards = (uniqueCard, order) => {
+
+        let resultsArr = [...uniqueCard];
+
+        let sortedList;
+
+        if (order) {
+            sortedList = resultsArr.sort((a,b) => a.id - b.id)
+            setOrder(!order)
+        } else {
+            sortedList = resultsArr.sort((a,b) => b.id - a.id)
+            setOrder(!order)
+        }
+
+        dispatch(setUniqueCard(sortedList))
+        navigate("/cardlist")
+    }
 
     const loaded = () => {
         if (uniqueCard.length === 0) {
@@ -23,16 +50,19 @@ export default function CardList({uniqueCard, addToDeck}) {
             )
         } else {
             return (
-                <Row xs={1} md={2} className="g-4">
-                        {uniqueCard.map((card, index) => {
-                            return (
-                                <Col key={index}>
-                                    <DisplayCard card={card}/>
-                                    <Button size="sm" variant="light" onClick={() => addToDeck(card)}>Add to Deck</Button>
-                                </Col>
-                            )
-                        })}
-                </Row>
+                <div>
+                    <Button onClick={() => sortCards(uniqueCard, order)}>Sort</Button>
+                    <Row xs={1} md={2} className="g-4">
+                            {uniqueCard.map((card, index) => {
+                                return (
+                                    <Col key={index}>
+                                        <DisplayCard card={card}/>
+                                        <Button size="sm" variant="light" onClick={() => addToDeck(card)}>Add to Deck</Button>
+                                    </Col>
+                                )
+                            })}
+                    </Row>
+                </div>
             )
         }
     }

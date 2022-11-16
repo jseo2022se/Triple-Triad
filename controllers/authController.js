@@ -24,7 +24,6 @@ const register = async (req, res) => {
 
         const payload = { id: newUser._id, user: newUser.username }
         const token = createToken(payload)
-        // console.log(token)
         res.status(200).json({ token })
 
     } catch (error) {

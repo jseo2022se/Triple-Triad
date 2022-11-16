@@ -10,27 +10,26 @@ export default function DisplayCard({ card }) {
             return (
                 <div>
                     <Card border="dark" style={{ width: '30rem' }} bg="secondary" text="light">
-                        <Card.Img variant="top" style={{ width: "150px"}} src={card.image} alt={card.name}/>
+                        <Card.Img className="center" variant="top" style={{ width: "150px"}} src={card.image} alt={card.name}/>
                         <Card.Body>
-                            <Card.Title>
-                                <h1> {card.id}. {card.name}</h1>
+                            <Card.Title className="center">
+                                <h2> {card.id}. {card.name}</h2>
                             </Card.Title>
                         </Card.Body>
                     </Card>
                 </div>
             )
         } else {
-            // console.log(card)
             return (
                 
                 <div>
                     <Card border="dark" style={{ width: '30rem' }} bg="secondary" text="light">
                         <Card.Link as={Link} to={`/mydecks/${card.cardinfo.id}`}>
-                            <Card.Img variant="top" style={{ width: "150px"}} src={card.cardinfo.image} alt={card.cardinfo.name}/>
+                            <Card.Img className="center" variant="top" style={{ width: "150px"}} src={card.cardinfo.image} alt={card.cardinfo.name}/>
                         </Card.Link>
                             <Card.Body>
-                                <Card.Title>
-                                    <h1> {card.cardinfo.id}. {card.cardinfo.name}</h1>
+                                <Card.Title className="center">
+                                    <h2> {card.cardinfo.id}. {card.cardinfo.name}</h2>
                                 </Card.Title>
                             </Card.Body>
                     </Card>
