@@ -35,7 +35,7 @@ export default function MyCards({myCardList, setMyCardList, order, setOrder}) {
             const response = await cardService.remove(card._id)
             alert('Removed card from deck!', response)
             // window.location.reload()
-            const filterList = myCardList.filter((item) => card._id !== item._id)
+            const filterList = myCardList?.filter((item) => card._id !== item._id)
             setMyCardList(filterList)
             
         } catch (error) {
