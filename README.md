@@ -51,7 +51,7 @@ Some technical challenges that were encountered during coding:
 
 ## Deployment
 
-- The React app is deployed through Netlify and is live through this URL: 
+- The React app is deployed through Netlify and is live through this URL: https://tripletriadsearcher.netlify.app/login
 
 ## License
 
