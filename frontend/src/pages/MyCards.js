@@ -37,6 +37,7 @@ export default function MyCards({myCardList, setMyCardList, order, setOrder}) {
             // window.location.reload()
             const filterList = myCardList?.filter((item) => card._id !== item._id)
             setMyCardList(filterList)
+            navigate('/mycards')
             
         } catch (error) {
             
