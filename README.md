@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Triple Triad Searcher
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Triple Triad Searcher is a card lookup application for the card mini-game Triple Triad, which is available in Final Fantasy XIV. It allows users to create their own accounts and add or remove cards to their list, and also features more in-depth information regarding the cards.
 
-### `npm start`
+The API used in this project to get the card data is available at: "https://triad.raelys.com/".
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
 
-### `npm test`
+This application is for people who play Final Fantasy XIV and are more interested in 
+looking up cards for Triple-Triad.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Technologies 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Mongoose, MongoDB Atlas, Express, ReactJS, React-Bootstrap, Redux Toolkit, NodeJS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technical Challenges
 
-### `npm run eject`
+Some technical challenges that were encountered during coding:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Designing the model schema (one-to-many relationship)
+    - One feature that was planned did not end up being implemented (i.e. creating decks)
+- Working on some of the CRUD operations 
+    - Updating the User and Card model
+- RTK Query for the API fetch
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Future Implementations
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Incorporate a deck data model 
+- Establish a better data model relationship
+- Have more CRUD operations, such as updating more than user information for both User and Card models
+- Make more use of Redux (RTK Query)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- All credits regarding the API go to: Raelys Skyborn of Behemoth | Powered by [Saint Coinach](https://github.com/ufx/SaintCoinach) |
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Trademark
 
-### Analyzing the Bundle Size
+- FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.
+  FINAL FANTASY XIV © SQUARE ENIX CO., LTD.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- The React app is deployed through Netlify and is live through this URL: 
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT]
+(https://choosealicense.com/licenses/mit/)
