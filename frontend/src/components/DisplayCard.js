@@ -24,7 +24,7 @@ export default function DisplayCard({ card }) {
                 
                 <div>
                     <Card border="dark" style={{ width: '30rem' }} bg="secondary" text="light">
-                        <Card.Link as={Link} to={`/mydecks/${card.cardinfo.id}`}>
+                        <Card.Link as={Link} to={`/mycards/${card.cardinfo.id}`}>
                             <Card.Img className="center" variant="top" style={{ width: "150px"}} src={card.cardinfo.image} alt={card.cardinfo.name}/>
                         </Card.Link>
                             <Card.Body>
