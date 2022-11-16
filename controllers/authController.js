@@ -3,6 +3,15 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/User')
 
+
+const testRoute = async (req, res) => {
+    try {
+        res.status(200).json({message: "hello"})
+    } catch (error) {
+        res.status(400).json({error: error})
+    }
+}
+
 const createToken = (payload) => {
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '30d' })
 }
@@ -62,5 +71,6 @@ const login = async (req, res) => {
 
 module.exports = {
     register,
-    login
+    login,
+    testRoute
 }
