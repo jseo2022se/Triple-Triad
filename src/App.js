@@ -45,7 +45,7 @@ function App() {
     try {
       const info = await userService.info()
       console.log(info)
-      const { userid, username, email } = info.data
+      const { userid, username, email } = info?.data
 
       dispatch(setInfo({username, email}))
       setUserID(userid)
