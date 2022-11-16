@@ -30,13 +30,14 @@ export default function MyCards({myCardList, setMyCardList, order, setOrder}) {
     }
 
     const removeCard = async (card) => {
-
         try {
-
+            
             const response = await cardService.remove(card._id)
             alert('Removed card from deck!', response)
-            window.location.reload()
-
+            // window.location.reload()
+            const filterList = myCardList.filter((item) => card._id !== item._id)
+            setMyCardList(filterList)
+            
         } catch (error) {
             
             console.log("Error in removing card:" , error)
