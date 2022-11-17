@@ -19,7 +19,7 @@ export default function CardDetails({myCardList}) {
 
     return (
         <div>
-            <Card style={{ width: '50rem' }} bg="secondary" text="light">
+            <Card style={{ width: '50rem' }} bg="secondary" text="light" className="center">
                 <Card.Img variant="top" style={{ width: '18rem' }}src={cardDetails.cardinfo?.image} alt={cardDetails.cardinfo?.name}/>
                 <Card.Body>
                     <Card.Title>{cardDetails.cardinfo?.id}. {cardDetails.cardinfo?.name}</Card.Title>
