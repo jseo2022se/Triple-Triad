@@ -38,7 +38,7 @@ export default function CardDetails({myCardList}) {
                     </ListGroup>
                 </Card.Body>
             </Card>
-            <button onClick={() => navigate('/mydecks')}>Return to list</button>
+            <button onClick={() => navigate('/mycards')}>Return to list</button>
         </div>
     )
 }
