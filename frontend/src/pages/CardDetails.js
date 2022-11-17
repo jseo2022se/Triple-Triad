@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Card from "react-bootstrap/Card"
 import { ListGroup } from "react-bootstrap";
 
-export default function CardDetails({decks}) {
+export default function CardDetails({myCardList}) {
 
     let [cardDetails, setCardDetails] = useState({})
 
@@ -12,9 +12,9 @@ export default function CardDetails({decks}) {
     let navigate = useNavigate()
 
     useEffect(() => {
-        const card = decks?.filter((d) => params.id == d.cardinfo.id)
+        const card = myCardList.filter((d) => params.id == d.cardinfo.id)
 
-        return card?.length ? setCardDetails(card[0]) : navigate('/')
+        return card.length ? setCardDetails(card[0]) : navigate('/')
     }, [])
 
     return (
