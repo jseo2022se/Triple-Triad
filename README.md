@@ -5,6 +5,8 @@
 
 Triple Triad Searcher is a card lookup application for the card mini-game Triple Triad, which is available in Final Fantasy XIV. It allows users to create their own accounts and add or remove cards to their list, and also features more in-depth information regarding the cards.
 
+This application also demonstrates a Full Stack application, wherein it demonstrates both Front-End and Back-End functionalities.
+
 The API used in this project to get the card data is available at: "https://triad.raelys.com/".
 
 
@@ -12,6 +14,17 @@ The API used in this project to get the card data is available at: "https://tria
 
 This application is for people who play Final Fantasy XIV and are more interested in 
 looking up cards for Triple-Triad.
+
+
+## Sample Screenshots
+
+![Homepage](images/homepage.jpg)
+
+![Card Details](images/details.jpg)
+
+![Login](images/login.jpg)
+
+![About](images/homepage.jpg)
 
 
 ## Technologies 
