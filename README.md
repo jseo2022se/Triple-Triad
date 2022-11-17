@@ -24,7 +24,7 @@ looking up cards for Triple-Triad.
 
 ![Login](images/login.jpg)
 
-![About](images/homepage.jpg)
+![About](images/about.jpg)
 
 
 ## Technologies 
