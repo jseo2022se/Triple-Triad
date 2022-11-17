@@ -12,7 +12,7 @@ export default function CardDetails({decks}) {
     let navigate = useNavigate()
 
     useEffect(() => {
-        const card = decks.filter((d) => params.id == d.cardinfo.id)
+        const card = decks?.filter((d) => params.id == d.cardinfo.id)
 
         return card.length ? setCardDetails(card[0]) : navigate('/')
     }, [])
